@@ -26,15 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="caramellatte">
+    <html lang="en" data-theme="cupcake">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar />
         <main className="p-5">
-          <Suspense fallback={<div>Loading...</div>}>
-            {children}
-          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </main>
       </body>
     </html>

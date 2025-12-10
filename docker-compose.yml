@@ -1,0 +1,21 @@
+volumes:
+  # Volume for MySQL data persistence
+  mysql_data:
+    driver: local
+services:
+  mysql:
+    image: mysql:8
+    container_name: nextjs-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234567890
+      MYSQL_DATABASE: next-app
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    
+networks:
+  default:
+    driver: bridge

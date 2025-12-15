@@ -19,6 +19,7 @@
     "fast-sort": "^3.4.1",
     "mysql2": "^3.15.3",
     "next": "16.0.7",
+    "next-auth": "^4.24.13",
     "next-cloudinary": "^6.17.5",
     "pg": "^8.16.3",
     "prisma": "^7.1.0",

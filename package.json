@@ -11,6 +11,7 @@
     "docker:down": "docker-compose down"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^1.0.7",
     "@prisma/adapter-mariadb": "^7.1.0",
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "^7.1.0",

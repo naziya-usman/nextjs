@@ -5,9 +5,6 @@ import { useSession } from 'next-auth/react';
 const NavBar = () => {
     const { status, data: session } = useSession();
 
-    if (status === 'loading') return <div>Loading...</div>
-    console.log(session?.user);
-
     return (
         <div className='navbar bg-neutral text-neutral-content'>
             <Link href='/' className='mr-5'> Next.js</Link>

@@ -7,6 +7,9 @@ import bcrypt from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
+   session: {
+    strategy: "jwt",
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -21,7 +24,7 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        if (credentials?.email! || credentials?.password!) return null;
+        if (!credentials?.email || !credentials?.password) return null;
 
         const user = await prisma.user.findUnique({
           where: { email: credentials?.email! },
@@ -29,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         if (!user) return null;
 
         const isPasswordValid = await bcrypt.compare(
-          credentials?.password!,
+          credentials.password,
           user.hashedPassword!
         );
         return isPasswordValid ? user : null;
@@ -40,11 +43,8 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
-  // session: {
-  //   strategy: "jwt",
-  // },
+ 
 };
-console.log(authOptions);
 
 const handler = NextAuth(authOptions);
 

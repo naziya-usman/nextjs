@@ -10,11 +10,15 @@ const NavBar = () => {
             <Link href='/' className='mr-5'> Next.js</Link>
             <Link href='/admin' className='mr-5'> Admin</Link>
             <Link href="/users" className='mr-5'> User</Link>
-            {status === 'authenticated' &&
+            {status === 'authenticated' && <>
+                <img 
+                    src={session?.user?.image || ""}
+                     alt="profile picture"
+                      style={{ width: "30px", height: "30px", borderRadius: "50%"}} />
                 <div>
-                    <span className='mr-5'> {session?.user?.name} </span>
+                    <span className='mx-5'> {session?.user?.name} </span>
                     <Link href="/api/auth/signout" className='mr-5'> Sign Out</Link>
-                </div>
+                </div></>
             }
             {status === 'unauthenticated' && <Link href="/api/auth/signin" className='mr-5'> Sign In</Link>}
         </div>

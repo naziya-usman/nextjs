@@ -10,5 +10,5 @@ export async function POST(request: Request) {
     subject: "Welcome to Our Service!",
     react: WellcomeTemplate({ name: "Naziya" }),
   });
-    return NextResponse.json("Email sent successfully");
+    return NextResponse.json("Email sent successfully ");
 }

@@ -5,7 +5,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import { Suspense } from "react";
 import AuthProvider from "./auth/Provider";
-import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="cupcake">
-      <GoogleAnalyticsScript/>
+      <GoogleAnalytics gaId="G-JP2BN75F6Q" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

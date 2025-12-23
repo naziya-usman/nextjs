@@ -6,7 +6,7 @@ const NavBar = () => {
     const { status, data: session } = useSession();
 
     return (
-        <div className="navbar bg-neutral-300 shadow-sm px-4 ">
+        <div className="fixed z-10 navbar bg-neutral-300 shadow-sm px-4 ">
             {/* Left Side: Brand and Links */}
             <div className="flex-1">
                 <Link href="/" className="btn btn-ghost text-xl">Next.js</Link>

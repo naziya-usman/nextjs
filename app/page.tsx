@@ -1,25 +1,20 @@
+'use client'
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const HeavyComponent = dynamic(() => import('./component/HeavyComponent'))
 
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { authOptions } from "./api/auth/[...nextauth]/route";
-import Image from "next/image";
-import flower from '@/public/images/flower.jpg'
-export default async function Home() {
+export default function Home() {
+  const [isValue, setValue] = useState(false)
 
-  const session = await getServerSession(authOptions);
-  console.log(session?.user);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center ">
       <h1 className="text-4xl font-bold mb-8">Welcome to the Home Page</h1>
-      {session?.user ? (
-        <div >
-          <p className="mb-4 font-bold">Signed in as {session.user.email}</p>
-        </div>
-      ) : (
-        <div>
-          <p className="mb-4">Not signed in</p>
-        </div>
-      )}
+      <button
+        className="btn btn-natural btn-sm"
+        onClick={() => {
+          setValue(true)
+        }}>lazzy</button>
+      {isValue && <HeavyComponent />}
     </main>
   )
 }

@@ -6,14 +6,14 @@ const NavBar = () => {
     const { status, data: session } = useSession();
 
     return (
-        <div className="fixed z-10 navbar bg-neutral-300 shadow-sm px-4 ">
+        <div className="navbar bg-neutral-300 shadow-sm px-4 ">
             {/* Left Side: Brand and Links */}
             <div className="flex-1">
                 <Link href="/" className="btn btn-ghost text-xl">Next.js</Link>
                 <Link href="/admin" className="btn btn-ghost btn-sm">Admin</Link>
                 <Link href="/users" className="btn btn-ghost btn-sm">Users</Link>
             </div>
-            {/* Right Side: Search and Auth */}
+           
             <div className="flex-none gap-2">
                 {/* Authentication Logic */}
                 {status === 'authenticated' ? (

@@ -1,17 +1,20 @@
+'use client'
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const HeavyComponent = dynamic(() => import('./component/HeavyComponent'))
 
-
-
-import Link from "next/link";
 export default function Home() {
-  return (
-    <div className="container">
-      <main><h1 >hello world</h1>
-        <button className="btn ">
-          <Link href="/users"> user</Link>
-        </button>
-      
-      </main>
+  const [isValue, setValue] = useState(false)
 
-    </div>
-  );
+  return (
+    <main className="flex min-h-screen flex-col items-center ">
+      <h1 className="text-4xl font-bold mb-8">Welcome to the Home Page</h1>
+      <button
+        className="btn btn-natural btn-sm"
+        onClick={() => {
+          setValue(true)
+        }}>lazzy</button>
+      {isValue && <HeavyComponent />}
+    </main>
+  )
 }
